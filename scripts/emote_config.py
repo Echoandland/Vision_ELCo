@@ -10,7 +10,7 @@ class Emote_Config:
         self.seed = seed
         self.hfpath = hfpath
 
-        self.train_csv_fp = 'benchmark_data/exp-entailment/train.csv'
+        self.train_csv_fp = 'benchmark_data/exp-entailment/output2.csv'
         self.val_csv_fp = 'benchmark_data/exp-entailment/val.csv'
         self.test_csv_fp = 'benchmark_data/exp-entailment/test.csv'
 
