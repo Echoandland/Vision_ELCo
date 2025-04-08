@@ -1,0 +1,8 @@
+strategy,bart-large_mean_accuracy,bert-base_mean_accuracy,roberta-base_mean_accuracy,roberta-large_mean_accuracy
+Overall,84.2,81.5,83.0,84.9
+Direct,89.0,89.8,89.0,86.4
+Metaphorical,74.2,74.2,77.4,81.7
+Semantic list,83.3,83.3,100.0,100.0
+Reduplication,60.0,60.0,80.0,80.0
+Single,81.0,81.0,90.5,90.5
+Negative,87.3,81.5,81.1,84.6

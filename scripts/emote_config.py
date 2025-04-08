@@ -10,15 +10,16 @@ class Emote_Config:
         self.seed = seed
         self.hfpath = hfpath
 
-        self.train_csv_fp = 'benchmark_data/exp-entailment/output2.csv'
+        self.train_csv_fp = 'benchmark_data/exp-entailment/detailed_description_only.csv'
+        self.train2_csv_fp = 'benchmark_data/exp-entailment/train.csv'
         self.val_csv_fp = 'benchmark_data/exp-entailment/val.csv'
         self.test_csv_fp = 'benchmark_data/exp-entailment/test.csv'
 
         # We choose popular models (high downloads) that are trained on MNLI
         if self.model_name == 'bert-base':
-            self.model_path = "WillHeld/bert-base-cased-mnli"
+            self.model_path = "gchhablani/bert-base-cased-finetuned-mnli"
         elif self.model_name == 'roberta-base':
-            self.model_path = "WillHeld/roberta-base-mnli"
+            self.model_path = "JeremiahZ/roberta-base-mnli"
         elif self.model_name == 'roberta-large':
             self.model_path = 'FacebookAI/roberta-large-mnli'
         elif self.model_name == 'bart-large':

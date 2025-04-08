@@ -1,0 +1,8 @@
+strategy,mean_accuracy,std_accuracy
+Direct,87.6,2.9
+Metaphorical,75.0,4.1
+Semantic list,88.3,6.7
+Reduplication,57.4,9.0
+Single,73.3,2.4
+Negative,83.3,3.1
+Overall,81.8,0.5

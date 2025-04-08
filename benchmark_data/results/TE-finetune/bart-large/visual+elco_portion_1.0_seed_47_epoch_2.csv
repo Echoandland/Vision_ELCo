@@ -1,0 +1,8 @@
+strategy,accuracy
+Overall,85.7
+Direct,89.8
+Metaphorical,81.7
+Semantic list,91.7
+Reduplication,80.0
+Single,90.5
+Negative,84.9

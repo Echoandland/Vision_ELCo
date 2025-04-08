@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Please define your own path here
-huggingface_path=“~/.cache/huggingface/hub”
+huggingface_path=~/.cache/huggingface/hub
 
 for model_name in bert-base roberta-base roberta-large bart-large
 do

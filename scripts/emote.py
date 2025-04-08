@@ -238,6 +238,15 @@ if __name__ == '__main__':
         print('train_data.shape: ', train_data.shape)
         print(train_data.head(10))
 
+    if args.portion == 1.0:
+        train2_data = pd.read_csv(new_emote_config.train2_csv_fp, escapechar='\\', engine='python')
+    else:
+        train2_data = pd.read_csv(new_emote_config.train2_csv_fp, escapechar='\\', engine='python')
+        train2_data = train2_data.sample(frac=new_emote_config.portion, random_state=1)
+        train2_data = train2_data.reset_index(drop=True)
+        print('train2_data.shape: ', train2_data.shape)
+        print(train2_data.head(10))
+
     val_data = pd.read_csv(new_emote_config.val_csv_fp, escapechar='\\', engine='python')
     test_data = pd.read_csv(new_emote_config.test_csv_fp, escapechar='\\', engine='python')
 
@@ -246,12 +255,14 @@ if __name__ == '__main__':
 
     # 对数据进行编码
     train_inputs, train_labels, train_strategies = encode_data(tokenizer, train_data['sent1'], train_data['sent2'], train_data['label'], train_data['strategy'])
+    train2_inputs, train2_labels, train2_strategies = encode_data(tokenizer, train2_data['sent1'], train2_data['sent2'], train2_data['label'], train2_data['strategy'])
     val_inputs, val_labels, val_strategies = encode_data(tokenizer, val_data['sent1'], val_data['sent2'], val_data['label'], val_data['strategy'])
     test_inputs, test_labels, test_strategies = encode_data(tokenizer, test_data['sent1'], test_data['sent2'], test_data['label'], test_data['strategy'])
     all_inputs, all_labels, all_strategies = encode_data(tokenizer, all_data['sent1'], all_data['sent2'], all_data['label'], all_data['strategy'])
 
     # 创建数据集
     train_dataset = CustomizedDataset(train_inputs, train_labels, train_strategies)
+    train2_dataset = CustomizedDataset(train2_inputs, train2_labels, train2_strategies)
     val_dataset = CustomizedDataset(val_inputs, val_labels, val_strategies)
     test_dataset = CustomizedDataset(test_inputs, test_labels, test_strategies)
     all_dataset = CustomizedDataset(all_inputs, all_labels, all_strategies)
@@ -261,6 +272,7 @@ if __name__ == '__main__':
 
     # 创建 DataLoader
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    train2_loader = DataLoader(train2_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size)
     test_loader = DataLoader(test_dataset, batch_size=batch_size)
     all_loader = DataLoader(all_dataset, batch_size=batch_size)
@@ -288,6 +300,15 @@ if __name__ == '__main__':
     model.resize_token_embeddings(len(tokenizer)) 
     model.to(device)
 
-    # 初始化训练器并开始训练
-    trainer = EmoteTrainer(model, train_loader, val_loader, test_loader, device, new_emote_config=new_emote_config, tokenizer=tokenizer)
+        
+    # 初始化训练器并开始训练 (visual json)
+    print("Fine-tune #1: visual info")
+    trainer = EmoteTrainer(model, train_loader, val_loader, test_loader, device, new_emote_config=new_emote_config, tokenizer=tokenizer, name='visual')
     trainer.train(epochs=new_emote_config.max_epoch)
+    
+    # 初始化训练器并开始训练 (elco)
+    print("Fine-tune #2: ELCo")
+    trainer2 = EmoteTrainer(model, train2_loader, val_loader, test_loader, device, new_emote_config=new_emote_config, tokenizer=tokenizer, name='visual+elco')
+    trainer2.train(epochs=new_emote_config.max_epoch)
+
+

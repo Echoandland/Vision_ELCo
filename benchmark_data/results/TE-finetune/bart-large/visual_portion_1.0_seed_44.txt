@@ -1,0 +1,401 @@
+Epoch: 1, Valid
+              precision    recall  f1-score   support
+
+           0     0.7778    0.5330    0.6325       197
+           1     0.6448    0.8477    0.7325       197
+
+    accuracy                         0.6904       394
+   macro avg     0.7113    0.6904    0.6825       394
+weighted avg     0.7113    0.6904    0.6825       394
+
+Valid accuracy: 69.0
+
+strategy, accuracy, correct count / total number
+0, 80.8, 59 / 73
+1, 88.7, 86 / 97
+2, 80.0, 8 / 10
+3, 100.0, 7 / 7
+4, 70.0, 7 / 10
+6, 53.3, 105 / 197
+
+Epoch: 1, Test
+              precision    recall  f1-score   support
+
+           0     0.7149    0.6293    0.6694       259
+           1     0.6690    0.7490    0.7067       259
+
+    accuracy                         0.6892       518
+   macro avg     0.6919    0.6892    0.6881       518
+weighted avg     0.6919    0.6892    0.6881       518
+
+Test accuracy: 68.9
+
+strategy, accuracy, correct count / total number
+0, 74.6, 88 / 118
+1, 75.3, 70 / 93
+2, 91.7, 11 / 12
+3, 66.7, 10 / 15
+4, 71.4, 15 / 21
+6, 62.9, 163 / 259
+
+Epoch: 2, Valid
+              precision    recall  f1-score   support
+
+           0     0.7000    0.7107    0.7053       197
+           1     0.7062    0.6954    0.7008       197
+
+    accuracy                         0.7030       394
+   macro avg     0.7031    0.7030    0.7030       394
+weighted avg     0.7031    0.7030    0.7030       394
+
+Valid accuracy: 70.3
+
+strategy, accuracy, correct count / total number
+0, 58.9, 43 / 73
+1, 76.3, 74 / 97
+2, 80.0, 8 / 10
+3, 100.0, 7 / 7
+4, 50.0, 5 / 10
+6, 71.1, 140 / 197
+
+Epoch: 2, Test
+              precision    recall  f1-score   support
+
+           0     0.6936    0.7954    0.7410       259
+           1     0.7602    0.6486    0.7000       259
+
+    accuracy                         0.7220       518
+   macro avg     0.7269    0.7220    0.7205       518
+weighted avg     0.7269    0.7220    0.7205       518
+
+Test accuracy: 72.2
+
+strategy, accuracy, correct count / total number
+0, 62.7, 74 / 118
+1, 64.5, 60 / 93
+2, 75.0, 9 / 12
+3, 73.3, 11 / 15
+4, 66.7, 14 / 21
+6, 79.5, 206 / 259
+
+Epoch: 3, Valid
+              precision    recall  f1-score   support
+
+           0     0.7079    0.7259    0.7168       197
+           1     0.7188    0.7005    0.7095       197
+
+    accuracy                         0.7132       394
+   macro avg     0.7133    0.7132    0.7132       394
+weighted avg     0.7133    0.7132    0.7132       394
+
+Valid accuracy: 71.3
+
+strategy, accuracy, correct count / total number
+0, 63.0, 46 / 73
+1, 73.2, 71 / 97
+2, 80.0, 8 / 10
+3, 100.0, 7 / 7
+4, 60.0, 6 / 10
+6, 72.6, 143 / 197
+
+Epoch: 3, Test
+              precision    recall  f1-score   support
+
+           0     0.7021    0.7915    0.7441       259
+           1     0.7611    0.6641    0.7093       259
+
+    accuracy                         0.7278       518
+   macro avg     0.7316    0.7278    0.7267       518
+weighted avg     0.7316    0.7278    0.7267       518
+
+Test accuracy: 72.8
+
+strategy, accuracy, correct count / total number
+0, 61.9, 73 / 118
+1, 68.8, 64 / 93
+2, 83.3, 10 / 12
+3, 73.3, 11 / 15
+4, 66.7, 14 / 21
+6, 79.2, 205 / 259
+
+Epoch: 4, Valid
+              precision    recall  f1-score   support
+
+           0     0.7778    0.6041    0.6800       197
+           1     0.6763    0.8274    0.7443       197
+
+    accuracy                         0.7157       394
+   macro avg     0.7271    0.7157    0.7121       394
+weighted avg     0.7271    0.7157    0.7121       394
+
+Valid accuracy: 71.6
+
+strategy, accuracy, correct count / total number
+0, 78.1, 57 / 73
+1, 86.6, 84 / 97
+2, 80.0, 8 / 10
+3, 100.0, 7 / 7
+4, 70.0, 7 / 10
+6, 60.4, 119 / 197
+
+Epoch: 4, Test
+              precision    recall  f1-score   support
+
+           0     0.7580    0.6409    0.6946       259
+           1     0.6890    0.7954    0.7384       259
+
+    accuracy                         0.7181       518
+   macro avg     0.7235    0.7181    0.7165       518
+weighted avg     0.7235    0.7181    0.7165       518
+
+Test accuracy: 71.8
+
+strategy, accuracy, correct count / total number
+0, 75.4, 89 / 118
+1, 83.9, 78 / 93
+2, 83.3, 10 / 12
+3, 86.7, 13 / 15
+4, 76.2, 16 / 21
+6, 64.1, 166 / 259
+
+Epoch: 5, Valid
+              precision    recall  f1-score   support
+
+           0     0.6492    0.8173    0.7236       197
+           1     0.7534    0.5584    0.6414       197
+
+    accuracy                         0.6878       394
+   macro avg     0.7013    0.6878    0.6825       394
+weighted avg     0.7013    0.6878    0.6825       394
+
+Valid accuracy: 68.8
+
+strategy, accuracy, correct count / total number
+0, 42.5, 31 / 73
+1, 61.9, 60 / 97
+2, 60.0, 6 / 10
+3, 100.0, 7 / 7
+4, 60.0, 6 / 10
+6, 81.7, 161 / 197
+
+Epoch: 5, Test
+              precision    recall  f1-score   support
+
+           0     0.6636    0.8224    0.7345       259
+           1     0.7665    0.5830    0.6623       259
+
+    accuracy                         0.7027       518
+   macro avg     0.7150    0.7027    0.6984       518
+weighted avg     0.7150    0.7027    0.6984       518
+
+Test accuracy: 70.3
+
+strategy, accuracy, correct count / total number
+0, 54.2, 64 / 118
+1, 55.9, 52 / 93
+2, 66.7, 8 / 12
+3, 80.0, 12 / 15
+4, 71.4, 15 / 21
+6, 82.2, 213 / 259
+
+Epoch: 6, Valid
+              precision    recall  f1-score   support
+
+           0     0.6052    0.8325    0.7009       197
+           1     0.7317    0.4569    0.5625       197
+
+    accuracy                         0.6447       394
+   macro avg     0.6684    0.6447    0.6317       394
+weighted avg     0.6684    0.6447    0.6317       394
+
+Valid accuracy: 64.5
+
+strategy, accuracy, correct count / total number
+0, 34.2, 25 / 73
+1, 52.6, 51 / 97
+2, 50.0, 5 / 10
+3, 85.7, 6 / 7
+4, 30.0, 3 / 10
+6, 83.2, 164 / 197
+
+Epoch: 6, Test
+              precision    recall  f1-score   support
+
+           0     0.6320    0.9151    0.7476       259
+           1     0.8462    0.4672    0.6020       259
+
+    accuracy                         0.6911       518
+   macro avg     0.7391    0.6911    0.6748       518
+weighted avg     0.7391    0.6911    0.6748       518
+
+Test accuracy: 69.1
+
+strategy, accuracy, correct count / total number
+0, 39.8, 47 / 118
+1, 46.2, 43 / 93
+2, 58.3, 7 / 12
+3, 80.0, 12 / 15
+4, 57.1, 12 / 21
+6, 91.5, 237 / 259
+
+Epoch: 7, Valid
+              precision    recall  f1-score   support
+
+           0     0.7570    0.4112    0.5329       197
+           1     0.5958    0.8680    0.7066       197
+
+    accuracy                         0.6396       394
+   macro avg     0.6764    0.6396    0.6198       394
+weighted avg     0.6764    0.6396    0.6198       394
+
+Valid accuracy: 64.0
+
+strategy, accuracy, correct count / total number
+0, 82.2, 60 / 73
+1, 90.7, 88 / 97
+2, 90.0, 9 / 10
+3, 100.0, 7 / 7
+4, 70.0, 7 / 10
+6, 41.1, 81 / 197
+
+Epoch: 7, Test
+              precision    recall  f1-score   support
+
+           0     0.7917    0.3668    0.5013       259
+           1     0.5879    0.9035    0.7123       259
+
+    accuracy                         0.6351       518
+   macro avg     0.6898    0.6351    0.6068       518
+weighted avg     0.6898    0.6351    0.6068       518
+
+Test accuracy: 63.5
+
+strategy, accuracy, correct count / total number
+0, 89.0, 105 / 118
+1, 91.4, 85 / 93
+2, 100.0, 12 / 12
+3, 86.7, 13 / 15
+4, 90.5, 19 / 21
+6, 36.7, 95 / 259
+
+Epoch: 8, Valid
+              precision    recall  f1-score   support
+
+           0     0.6409    0.8426    0.7281       197
+           1     0.7704    0.5279    0.6265       197
+
+    accuracy                         0.6853       394
+   macro avg     0.7056    0.6853    0.6773       394
+weighted avg     0.7056    0.6853    0.6773       394
+
+Valid accuracy: 68.5
+
+strategy, accuracy, correct count / total number
+0, 43.8, 32 / 73
+1, 57.7, 56 / 97
+2, 40.0, 4 / 10
+3, 100.0, 7 / 7
+4, 50.0, 5 / 10
+6, 84.3, 166 / 197
+
+Epoch: 8, Test
+              precision    recall  f1-score   support
+
+           0     0.6476    0.8301    0.7276       259
+           1     0.7634    0.5483    0.6382       259
+
+    accuracy                         0.6892       518
+   macro avg     0.7055    0.6892    0.6829       518
+weighted avg     0.7055    0.6892    0.6829       518
+
+Test accuracy: 68.9
+
+strategy, accuracy, correct count / total number
+0, 52.5, 62 / 118
+1, 50.5, 47 / 93
+2, 75.0, 9 / 12
+3, 73.3, 11 / 15
+4, 61.9, 13 / 21
+6, 83.0, 215 / 259
+
+Epoch: 9, Valid
+              precision    recall  f1-score   support
+
+           0     0.6595    0.7766    0.7133       197
+           1     0.7284    0.5990    0.6574       197
+
+    accuracy                         0.6878       394
+   macro avg     0.6939    0.6878    0.6853       394
+weighted avg     0.6939    0.6878    0.6853       394
+
+Valid accuracy: 68.8
+
+strategy, accuracy, correct count / total number
+0, 47.9, 35 / 73
+1, 64.9, 63 / 97
+2, 70.0, 7 / 10
+3, 100.0, 7 / 7
+4, 60.0, 6 / 10
+6, 77.7, 153 / 197
+
+Epoch: 9, Test
+              precision    recall  f1-score   support
+
+           0     0.6786    0.8069    0.7372       259
+           1     0.7619    0.6178    0.6823       259
+
+    accuracy                         0.7124       518
+   macro avg     0.7202    0.7124    0.7098       518
+weighted avg     0.7202    0.7124    0.7098       518
+
+Test accuracy: 71.2
+
+strategy, accuracy, correct count / total number
+0, 57.6, 68 / 118
+1, 59.1, 55 / 93
+2, 83.3, 10 / 12
+3, 86.7, 13 / 15
+4, 66.7, 14 / 21
+6, 80.7, 209 / 259
+
+Epoch: 10, Valid
+              precision    recall  f1-score   support
+
+           0     0.6440    0.8173    0.7204       197
+           1     0.7500    0.5482    0.6334       197
+
+    accuracy                         0.6827       394
+   macro avg     0.6970    0.6827    0.6769       394
+weighted avg     0.6970    0.6827    0.6769       394
+
+Valid accuracy: 68.3
+
+strategy, accuracy, correct count / total number
+0, 45.2, 33 / 73
+1, 59.8, 58 / 97
+2, 50.0, 5 / 10
+3, 100.0, 7 / 7
+4, 50.0, 5 / 10
+6, 81.7, 161 / 197
+
+Epoch: 10, Test
+              precision    recall  f1-score   support
+
+           0     0.6604    0.8185    0.7310       259
+           1     0.7614    0.5792    0.6579       259
+
+    accuracy                         0.6988       518
+   macro avg     0.7109    0.6988    0.6945       518
+weighted avg     0.7109    0.6988    0.6945       518
+
+Test accuracy: 69.9
+
+strategy, accuracy, correct count / total number
+0, 54.2, 64 / 118
+1, 52.7, 49 / 93
+2, 83.3, 10 / 12
+3, 86.7, 13 / 15
+4, 66.7, 14 / 21
+6, 81.9, 212 / 259
+
+Best Val Accuracy: 71.6 at Epoch 4

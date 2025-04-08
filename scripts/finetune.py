@@ -16,7 +16,7 @@ from emote_config import Emote_Config
 
 
 class EmoteTrainer:
-    def __init__(self, model, train_loader, val_loader, test_loader, device, new_emote_config, tokenizer):
+    def __init__(self, model, train_loader, val_loader, test_loader, device, new_emote_config, tokenizer, name):
         self.model = model.to(device)
         self.train_loader = train_loader
         self.val_loader = val_loader
@@ -24,6 +24,7 @@ class EmoteTrainer:
         self.device = device
         self.new_emote_config = new_emote_config
         self.tokenizer = tokenizer
+        self.name = name
 
         self.batch_size = self.new_emote_config.bs
         self.model_name = self.new_emote_config.model_name
@@ -41,9 +42,11 @@ class EmoteTrainer:
         self.best_epoch = -1
 
         self.save_dir = self.new_emote_config.sft_dir
-        self.fp_txt = '{}/portion_{}_seed_{}.txt'.format(self.save_dir, self.portion, self.seed)
-        self.fp_csv = '{}/portion_{}_seed_{}.csv'.format(self.save_dir, self.portion, self.seed)
-        self.fp_csv_best = '{}/portion_{}_seed_{}_best.csv'.format(self.save_dir, self.portion, self.seed)
+        self.fp_txt = '{}/{}_portion_{}_seed_{}.txt'.format(self.save_dir, self.name, self.portion, self.seed)
+        self.fp_csv = '{}/{}_portion_{}_seed_{}.csv'.format(self.save_dir, self.name, self.portion, self.seed)
+        self.fp_csv_best = '{}/{}_portion_{}_seed_{}_best.csv'.format(self.save_dir, self.name, self.portion, self.seed)
+        self.fp_csv_epoch = lambda epoch: '{}/{}_portion_{}_seed_{}_epoch_{}.csv'.format(self.save_dir, self.name, self.portion, self.seed, epoch)
+
 
     def train(self, epochs):
         for epoch in range(epochs):
@@ -52,35 +55,43 @@ class EmoteTrainer:
             self._run_epoch(epoch, train=True)
             val_acc, val_acc_strategy = self._run_epoch(epoch=epoch, train=False, loader=self.val_loader)
             test_acc, test_acc_strategy = self._run_epoch(epoch=epoch, train=False, loader=self.test_loader)
+
             
+            # if epoch is 0, then save the model
+            save_dir = "{}/{}_seed_{}_best".format(self.new_emote_config.model_save_dir, self.name, self.seed)
+            if epoch == 0 and self.portion == 1: ## we now only save fully trained models
+                model_to_save = self.model.module if hasattr(self.model, 'module') else self.model
+                model_to_save.save_pretrained(save_dir)
+                self.tokenizer.save_pretrained(save_dir)
+                print("Saving model checkpoint to %s" % save_dir)
+            if epoch > 0 and val_acc > self.best_val_acc and self.portion == 1:
+                model_to_save = self.model.module if hasattr(self.model, 'module') else self.model
+                model_to_save.save_pretrained(save_dir)
+                self.tokenizer.save_pretrained(save_dir)
+                print("Saving model checkpoint to %s" % save_dir)
+
+            small_dict = {}
+            small_dict['Overall'] = test_acc
+            small_dict['Direct'] = test_acc_strategy[0]
+            small_dict['Metaphorical'] = test_acc_strategy[1]
+            small_dict['Semantic list'] = test_acc_strategy[2]
+            small_dict['Reduplication'] = test_acc_strategy[3]
+            small_dict['Single'] = test_acc_strategy[4]
+            small_dict['Negative'] = test_acc_strategy[5]
+            # save it into a csv
+            with open(self.fp_csv_epoch(epoch + 1), 'w') as f:
+                f.write('strategy,accuracy\n')
+                for key in small_dict.keys():
+                    f.write('{},{}\n'.format(key, small_dict[key]))
+
             if val_acc > self.best_val_acc:
                 self.best_val_acc = val_acc
                 self.best_epoch = epoch + 1
-                small_dict = {}
-                small_dict['Overall'] = test_acc
-                small_dict['Direct'] = test_acc_strategy[0]
-                small_dict['Metaphorical'] = test_acc_strategy[1]
-                small_dict['Semantic list'] = test_acc_strategy[2]
-                small_dict['Reduplication'] = test_acc_strategy[3]
-                small_dict['Single'] = test_acc_strategy[4]
-                small_dict['Negative'] = test_acc_strategy[5]
                 # save it into a csv
                 with open(self.fp_csv_best, 'w') as f:
                     f.write('strategy,accuracy\n')
                     for key in small_dict.keys():
                         f.write('{},{}\n'.format(key, small_dict[key]))
-
-            # if epoch is 0, then save the model
-            if epoch == 0 and self.portion == 1: ## we now only save fully trained models
-                model_to_save = self.model.module if hasattr(self.model, 'module') else self.model
-                model_to_save.save_pretrained("{}/seed_{}_epoch_{}.pt".format(self.new_emote_config.model_save_dir, self.seed, epoch))
-                self.tokenizer.save_pretrained("{}/seed_{}_epoch_{}.pt".format(self.new_emote_config.model_save_dir, self.seed, epoch))
-                print("Saving model checkpoint to %s" % "{}/seed_{}_epoch_{}.pt".format(self.new_emote_config.model_save_dir, self.seed, epoch))
-            if epoch > 0 and val_acc > self.best_val_acc and self.portion == 1:
-                model_to_save = self.model.module if hasattr(self.model, 'module') else self.model
-                model_to_save.save_pretrained("{}/seed_{}_epoch_{}.pt".format(self.new_emote_config.model_save_dir, self.seed, epoch))
-                self.tokenizer.save_pretrained("{}/seed_{}_epoch_{}.pt".format(self.new_emote_config.model_save_dir, self.seed, epoch))
-                print("Saving model checkpoint to %s" % "{}/seed_{}_epoch_{}.pt".format(self.new_emote_config.model_save_dir, self.seed, epoch))
 
         # Print the epoch with the best validation loss
         print(f'Best Epoch: {self.best_epoch}')
@@ -90,6 +101,11 @@ class EmoteTrainer:
         # Write it into fp_txt
         with open(self.fp_txt, 'a') as f:
             f.write(f'Best Val Accuracy: {self.best_val_acc} at Epoch {self.best_epoch}\n')
+
+        # rollback to best model
+        print(f'Rolled back to best model saved at {save_dir}')
+        self.model = self.model.__class__.from_pretrained(save_dir)
+        self.tokenizer = self.tokenizer.__class__.from_pretrained(save_dir)
 
 
     def _run_epoch(self, epoch, train, loader=None):
