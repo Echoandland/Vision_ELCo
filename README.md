@@ -10,6 +10,8 @@ We propose a visually-informed fine-tuning pipeline that equips language models 
 - overall description.
 
 Our fine-tuned models demonstrate superior performance across all five emoji entailment types. 
+<img width="722" alt="image" src="https://github.com/user-attachments/assets/9d7cf2b1-2cfa-467a-95cd-8eb43fc9b3f6" />
+
 <img width="606" alt="image" src="https://github.com/user-attachments/assets/9f8e5414-745c-4a6a-913c-2b591a6c238b" />
 
 
